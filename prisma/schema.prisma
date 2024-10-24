@@ -1,0 +1,87 @@
+// schema.prisma
+
+// Add this at the top of your schema.prisma file
+datasource db {
+  provider = "postgresql" // or "mysql", "sqlite", etc.
+  url      = env("DATABASE_URL") // The connection string will come from your .env file
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Your existing schema definitions here (User, Product, Inventory, etc.)
+
+
+model User {
+  user_id    Int      @id @default(autoincrement())
+  username   String   @unique
+  email      String   @unique
+  password   String
+  role       Role     @default(CUSTOMER)
+  gold       Float    @default(0.0) // User's gold balance
+  created_at DateTime @default(now())
+
+  // Relationships
+  inventory Inventory[]
+  transactions Transaction[]
+}
+
+model Product {
+  product_id     Int      @id @default(autoincrement()) // Unique product ID
+  name           String   // Name of the product
+  description    String   // Product description
+  price_in_gold  Float    // Price of the product in gold
+  stock_quantity Int      // Available quantity of the product
+  created_at     DateTime @default(now()) // When the product was added
+
+  // Relationships
+  inventoryItems Inventory[] // Keeps track of products in user's inventory
+}
+
+
+model Inventory {
+  inventory_id Int    @id @default(autoincrement())
+  created_at   DateTime @default(now())
+
+  // Relationships
+  user    User    @relation(fields: [user_id], references: [user_id])
+  user_id Int
+  product Product @relation(fields: [product_id], references: [product_id])
+  product_id Int
+  quantity Int     @default(1) // Number of this product in user's inventory
+  status   ItemStatus @default(OWNED) // Whether it's used, owned, or sold
+}
+
+model Transaction {
+  transaction_id   Int     @id @default(autoincrement())
+  transaction_type TransactionType
+  amount           Float   // Amount of gold used or earned
+  created_at       DateTime @default(now())
+
+  // Foreign key to Product (optional)
+  product_id       Int?     // Optional foreign key to the Product
+
+  // Foreign key to User (mandatory)
+  user_id          Int
+  user             User @relation(fields: [user_id], references: [user_id])
+}
+
+
+
+enum ItemStatus {
+  OWNED
+  USED
+  SOLD
+}
+
+enum TransactionType {
+  PURCHASE
+  SALE
+  USE
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
