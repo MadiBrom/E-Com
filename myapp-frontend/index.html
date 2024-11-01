@@ -3,62 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Users and Products</title>
-    <style>
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      th,
-      td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: left;
-      }
-      th {
-        background-color: #f2f2f2;
-      }
-    </style>
+    <title>Document</title>
   </head>
   <body>
-    <h1>Users and Their Products</h1>
-
-    <table id="users-table">
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Product Name</th>
-          <th>Quantity</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Data will be inserted here by JavaScript -->
-      </tbody>
-    </table>
-
-    <script>
-      // Fetch users and their products from the backend
-      fetch("/users")
-        .then((response) => response.json())
-        .then((users) => {
-          const tableBody = document.querySelector("#users-table tbody");
-          users.forEach((user) => {
-            user.inventory.forEach((item) => {
-              const row = document.createElement("tr");
-              row.innerHTML = `
-              <td>${user.username}</td>
-              <td>${user.email}</td>
-              <td>${item.product.name}</td>
-              <td>${item.quantity}</td>
-              <td>${item.status}</td>
-            `;
-              tableBody.appendChild(row);
-            });
-          });
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

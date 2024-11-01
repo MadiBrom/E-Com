@@ -5,38 +5,232 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* General Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Navbar Styles */
+.navbar {
+  background-color: #333;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.card {
-  padding: 2em;
+.navbar button {
+  background-color: #555;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.navbar button:hover {
+  background-color: #777;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Home Page Styles */
+h1 {
+  text-align: center;
+  margin: 2rem 0;
+  color: #333;
+}
+
+/* Products Page Styles */
+.product-page-container {
+  padding: 1rem;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  max-width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-info h3 {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.product-info p {
+  margin: 0.3rem 0;
+  color: #555;
+}
+
+.add-to-cart-btn {
+  background-color: #28a745;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #218838;
+}
+
+/* Cart Styles */
+.cart-title {
+  margin-top: 2rem;
+  text-align: center;
+  color: #333;
+}
+
+.cart-container {
+  padding: 1rem;
+}
+
+.cart-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.cart-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity-controls button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.quantity-controls button:hover {
+  background-color: #0056b3;
+}
+
+.remove-from-cart-btn {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-from-cart-btn:hover {
+  background-color: #c82333;
+}
+
+.cart-total {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.empty-cart-message {
+  text-align: center;
+  color: #555;
+  font-style: italic;
+}
+
+/* Profile Page Styles */
+.profile-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.profile-container h1 {
+  color: #333;
+}
+
+/* Additional Profile Component Styling */
+.profile-container h2 {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.profile-container h3 {
+  font-size: 1.5rem;
+  color: #4a90e2;
+  margin-top: 2rem;
+}
+
+.profile-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.profile-container li {
+  margin-bottom: 1rem;
+  background-color: #f9f9fb;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.profile-container strong {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.profile-container p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.profile-container h4 {
+  font-size: 1.1rem;
+  color: #4a90e2;
+  margin-top: 1rem;
+}
+
+.profile-container p.no-orders {
+  font-style: italic;
+  color: #999;
 }
