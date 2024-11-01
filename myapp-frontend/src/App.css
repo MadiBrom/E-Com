@@ -14,7 +14,7 @@
 }
 
 body {
-  background-color: #f4f4f4;
+  background-color: #f0f2f5;
   color: #333;
   line-height: 1.6;
 }
@@ -188,7 +188,6 @@ h1 {
   color: #333;
 }
 
-/* Additional Profile Component Styling */
 .profile-container h2 {
   font-size: 1.2rem;
   color: #555;
@@ -233,4 +232,17 @@ h1 {
 .profile-container p.no-orders {
   font-style: italic;
   color: #999;
+}
+
+/* Button Styling */
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
 }

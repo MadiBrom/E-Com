@@ -7,17 +7,22 @@ const Profile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch user data from localStorage
     const fetchUserData = () => {
-      const storedUser = JSON.parse(localStorage.getItem("user"));
-      if (storedUser) {
-        setUser(storedUser);
-      } else {
-        navigate("/login"); // Redirect to login if user data isn't found
+      let storedUser = JSON.parse(localStorage.getItem("user"));
+      if (!storedUser) {
+        navigate("/login"); // Redirect if no user is found
+        return;
       }
+
+      // Initialize gold to 500 if not already set
+      if (storedUser.gold === undefined) {
+        storedUser = { ...storedUser, gold: 500 };
+        localStorage.setItem("user", JSON.stringify(storedUser));
+      }
+
+      setUser(storedUser);
     };
 
-    // Fetch orders from localStorage
     const fetchOrders = () => {
       const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
       setOrders(storedOrders);
@@ -27,10 +32,31 @@ const Profile = () => {
     fetchOrders();
   }, [navigate]);
 
+  useEffect(() => {
+    const calculateTotalOrderCost = () => {
+      return orders.reduce((total, order) => total + order.total, 0);
+    };
+
+    if (user && orders.length > 0) {
+      const totalOrderCost = calculateTotalOrderCost();
+      if (user.gold >= totalOrderCost) {
+        const updatedUser = {
+          ...user,
+          gold: parseFloat((user.gold - totalOrderCost).toFixed(2)),
+        };
+        setUser(updatedUser);
+        localStorage.setItem("user", JSON.stringify(updatedUser));
+      } else {
+        console.warn("Not enough gold to cover all orders");
+      }
+    }
+  }, [user, orders]);
+
   return (
     <div className="profile-container">
       <h1>Welcome, {user ? user.username : "User"}!</h1>
       <h2>Email: {user ? user.email : "Loading..."}</h2>
+      <h3>Gold Balance: {user ? user.gold.toFixed(2) : "0.00"} Gold</h3>
       <h3>Your Orders:</h3>
       {orders.length > 0 ? (
         <ul>
