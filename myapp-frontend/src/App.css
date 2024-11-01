@@ -11,10 +11,10 @@
 
 /* Navbar Styles */
 .navbar {
+  width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   background: var(--navbar-background);
   color: var(--text-color);
   padding: 1rem 2rem;
@@ -28,14 +28,14 @@
 .sidebar {
   background-color: var(--navbar-background);
   color: var(--text-color);
-  width: 250px; /* Fixed width for sidebar */
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Center items vertically */
-  height: auto; /* Allow content to define height */
-  box-shadow: 4px 0 12px var(--shadow-color); /* Sidebar shadow */
+  justify-content: center;
+  width: 300px; /* Increase width for wider layout */
+  height: auto;
+  box-shadow: 4px 0 12px var(--shadow-color);
   text-align: center;
   position: relative;
   margin-top: 4rem; /* Offset sidebar below navbar */
@@ -68,12 +68,12 @@
   justify-content: center; /* Center vertically */
   background-color: var(--background-color);
   color: var(--text-color);
-  max-width: 800px; /* Adjust based on preference */
-  width: 100%;
+  width: 80vw; /* Increased width for a fuller view */
+  max-width: 1200px;
   height: auto;
   box-sizing: border-box;
   margin: auto;
-  margin-top: 4rem; /* Offset content below navbar */
+  margin-top: 4rem;
 }
 
 /* General Reset and Base Styles */
@@ -92,7 +92,7 @@ body {
 
 /* Container Styles */
 .container {
-  max-width: 800px;
+  max-width: 1200px;
   padding: 2rem;
   background-color: var(--container-background);
   box-shadow: 0 4px 12px var(--shadow-color);
@@ -149,13 +149,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Center vertically */
+  justify-content: center;
   padding: 3rem;
   background: var(--container-background);
   box-shadow: 0 4px 8px var(--shadow-color);
   margin: auto;
-  width: 100%;
-  max-width: 800px;
+  width: 90vw; /* Set to 90vw to make the container occupy most of the screen width */
+  max-width: 1200px;
 }
 
 /* Hero Section */
@@ -190,14 +190,15 @@ body {
 
 /* Products Container */
 .products-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 2rem;
-  padding: 3rem;
+  display: flex;
+  flex-direction: column; /* Arrange items in a column, creating rows */
+  gap: 1.5rem;
+  padding: 2rem;
   background-color: var(--background-color);
-  justify-content: center; /* Center grid items horizontally */
+  align-items: center; /* Center items within the container */
+  width: 100%;
+  max-width: 800px; /* Control the overall width */
   margin: auto;
-  max-width: 100%;
 }
 
 /* Product Card */
@@ -210,6 +211,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%; /* Each card takes full width of the container */
+  max-width: 700px; /* Set a maximum width for balance */
+  text-align: center;
 }
 
 .product-image {
@@ -257,14 +261,16 @@ body {
   gap: 2rem;
   background-color: var(--background-color);
   color: var(--text-color);
+  width: 90vw;
+  max-width: 1200px;
 }
 
 /* Profile Container */
 .profile-container {
   background-color: var(--container-background);
   padding: 2rem;
-  max-width: 700px;
-  width: 100%;
+  max-width: 1000px; /* Increased for a wider layout */
+  width: 90%;
   border-radius: 10px;
   box-shadow: 0 4px 12px var(--shadow-color);
   text-align: center;
