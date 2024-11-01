@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Home.css"; // Make sure to import the CSS file
+import "./css/home.css"; // Make sure to import the CSS file
 
 const Home = () => {
   const [goldToAdd, setGoldToAdd] = useState(0);
@@ -35,7 +35,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <h1>Hello!</h1>
-      <h2>Current Gold Balance: {user ? user.gold.toFixed(2) : "0.00"} Gold</h2>
+      <h2>Current Gold Balance: {user ? user.gold.toFixed(0) : "0"} Gold</h2>
       <div>
         <label>
           Add Gold:
@@ -43,7 +43,7 @@ const Home = () => {
             type="number"
             value={goldToAdd}
             onChange={(e) =>
-              setGoldToAdd(parseFloat(e.target.value).toFixed(2))
+              setGoldToAdd(parseFloat(e.target.value).toFixed(0))
             }
             placeholder="Enter gold amount"
           />

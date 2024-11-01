@@ -1,7 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = () => setIsLoggedIn(true);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    navigate("/"); // Redirect to home page after logout
+  };
+
   return (
     <div className="navbar">
       <Link to="/">
@@ -10,15 +20,27 @@ const Navbar = () => {
       <Link to="/products">
         <button>Product</button>
       </Link>
-      <Link to="/profile">
-        <button>Profile</button>
-      </Link>
-      <Link to="/login">
-        <button>Login</button>
-      </Link>
-      <Link to="/register">
-        <button>Register</button>
-      </Link>
+
+      {/* Conditional rendering for Profile */}
+      {isLoggedIn && (
+        <Link to="/profile">
+          <button>Profile</button>
+        </Link>
+      )}
+
+      {/* Conditional rendering for Login/Register or Logout */}
+      {isLoggedIn ? (
+        <button onClick={handleLogout}>Logout</button>
+      ) : (
+        <>
+          <Link to="/login">
+            <button onClick={handleLogin}>Login</button>
+          </Link>
+          <Link to="/register">
+            <button>Register</button>
+          </Link>
+        </>
+      )}
     </div>
   );
 };

@@ -47,6 +47,7 @@ const Profile = () => {
         <h2 className="profile-subheading">
           Email: {user ? user.email : "Loading..."}
         </h2>
+        <h3>Current Gold Balance: {user ? user.gold.toFixed(0) : "0"} Gold</h3>
         <h3 className="orders-heading">Your Orders:</h3>
         {orders.length > 0 ? (
           <ul className="orders-list">
@@ -54,12 +55,12 @@ const Profile = () => {
               <li key={order.id} className="order-item">
                 <strong>Order #{order.id}</strong>
                 <p>Date: {new Date(order.date).toLocaleDateString()}</p>
-                <p>Total: ${order.total.toFixed(2)}</p>
+                <p>Total: {order.total.toFixed(0)} Gold</p>
                 <h4>Items:</h4>
                 <ul className="item-list">
                   {order.items.map((item, index) => (
                     <li key={index} className="item">
-                      {item.name} - ${item.price.toFixed(2)} x {item.quantity}
+                      {item.name} - {item.price.toFixed(0)} gp x {item.quantity}
                     </li>
                   ))}
                 </ul>
