@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./css/home.css"; // Make sure to import the CSS file
 
 const Home = () => {
   const [goldToAdd, setGoldToAdd] = useState(0);

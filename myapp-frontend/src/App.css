@@ -1,8 +1,79 @@
+/* Root Layout */
 #root {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center vertically */
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 4rem; /* Offset for fixed navbar */
+}
+
+/* Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--navbar-background);
+  color: var(--text-color);
+  padding: 1rem 2rem;
   text-align: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+/* Sidebar Styles */
+.sidebar {
+  background-color: var(--navbar-background);
+  color: var(--text-color);
+  width: 250px; /* Fixed width for sidebar */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center items vertically */
+  height: auto; /* Allow content to define height */
+  box-shadow: 4px 0 12px var(--shadow-color); /* Sidebar shadow */
+  text-align: center;
+  position: relative;
+  margin-top: 4rem; /* Offset sidebar below navbar */
+}
+
+/* Sidebar Button Styles */
+.sidebar button {
+  background-color: transparent;
+  color: var(--text-color);
+  border: none;
+  padding: 10px 15px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 3px solid transparent;
+  margin-bottom: 10px;
+}
+
+.sidebar button:hover {
+  color: var(--text-color);
+  border-bottom: 3px solid var(--button-hover-background);
+}
+
+/* Main Content Area */
+.main-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center vertically */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  max-width: 800px; /* Adjust based on preference */
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  margin: auto;
+  margin-top: 4rem; /* Offset content below navbar */
 }
 
 /* General Reset and Base Styles */
@@ -14,84 +85,289 @@
 }
 
 body {
-  background-color: #ecdfcc; /* Light background */
-  color: #3c3d37; /* Main text color */
+  background-color: var(--background-color);
+  color: var(--text-color);
   line-height: 1.6;
 }
 
-/* Navbar Styles */
-.navbar {
+/* Container Styles */
+.container {
+  max-width: 800px;
+  padding: 2rem;
+  background-color: var(--container-background);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  text-align: center;
   display: flex;
-  justify-content: flex-start;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(
-    135deg,
-    #181c14,
-    #3c3d37
-  ); /* Gradient background */
-  padding: 0;
-  z-index: 1000;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15); /* Depth for modern look */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 
-.navbar a {
-  text-decoration: none;
-}
-
-.navbar button {
-  background-color: transparent; /* Transparent to show gradient background */
-  color: #ecdfcc; /* Light text color */
+/* Button Styling */
+.sidebar button,
+.main-content button,
+.container button {
+  background-color: var(--button-background);
+  color: var(--text-color);
   border: none;
-  padding: 15px 20px;
-  font-size: 15px;
+  padding: 10px 20px;
   cursor: pointer;
-  transition: color 0.3s ease, transform 0.2s ease, border-bottom 0.3s ease;
-  border-bottom: 3px solid transparent;
-  margin: 0;
-  position: relative;
-  overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
-.navbar button:before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  width: 200%;
-  height: 200%;
-  background: rgba(
-    236,
-    223,
-    204,
-    0.2
-  ); /* Subtle light color for hover effect */
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  transform: translate(-50%, -50%) scale(0);
-  pointer-events: none;
+.sidebar button:hover,
+.main-content button:hover,
+.container button:hover {
+  background-color: var(--button-hover-background);
 }
 
-.navbar button:hover:before {
-  transform: translate(-50%, -50%) scale(1); /* Subtle circle effect */
+/* Color Palette */
+:root {
+  --background-color: #fbf1ee;
+  --text-color: #11151c;
+  --navbar-background: linear-gradient(135deg, #212d40, #364156);
+  --button-background: #7d4e57;
+  --button-hover-background: #5a4857;
+  --container-background: #f2cdc5;
+  --shadow-color: rgba(33, 45, 64, 0.2);
 }
 
-.navbar button:hover {
-  color: #ecdfcc; /* Lighter color on hover */
-  border-bottom: 3px solid #697565; /* Accent color for hover */
-  transform: translateY(-2px); /* Subtle lift effect */
+/* DARK MODE */
+.dark-mode {
+  --background-color: #11151c;
+  --text-color: #fbf1ee;
+  --navbar-background: linear-gradient(135deg, #364156, #212d40);
+  --button-background: #d66853;
+  --button-hover-background: #7d4e57;
+  --container-background: #212d40;
+  --shadow-color: rgba(242, 205, 197, 0.2);
 }
 
-.navbar button:focus {
-  outline: none;
-  color: #ecdfcc;
-  border-bottom: 3px solid #3c3d37; /* Darker accent for focus */
+/* Home Page Layout */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center vertically */
+  padding: 3rem;
+  background: var(--container-background);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  margin: auto;
+  width: 100%;
+  max-width: 800px;
 }
 
-.navbar button.active {
-  color: #ecdfcc;
-  border-bottom: 3px solid #181c14; /* Dark accent for active tab */
+/* Hero Section */
+.home-hero {
+  font-size: 2rem;
   font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.home-intro {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* CTA Button */
+.home-cta-button {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  background-color: var(--button-background);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.home-cta-button:hover {
+  background-color: var(--button-hover-background);
+}
+
+/* Products Container */
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 3rem;
+  background-color: var(--background-color);
+  justify-content: center; /* Center grid items horizontally */
+  margin: auto;
+  max-width: 100%;
+}
+
+/* Product Card */
+.product-card {
+  background-color: var(--container-background);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+/* Add to Cart Button */
+.add-to-cart-button {
+  padding: 8px 16px;
+  background-color: var(--button-background);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+  background-color: var(--button-hover-background);
+}
+
+/* Profile Wrapper */
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Profile Container */
+.profile-container {
+  background-color: var(--container-background);
+  padding: 2rem;
+  max-width: 700px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  text-align: center;
+  color: var(--text-color);
+}
+
+/* Headings */
+.profile-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--heading-color);
+  margin-bottom: 0.5rem;
+}
+
+.profile-subheading {
+  font-size: 1.2rem;
+  color: var(--highlight-background);
+  margin-bottom: 1rem;
+}
+
+.orders-heading,
+.tally-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--heading-color);
+  margin: 1.5rem 0;
+}
+
+/* Orders List */
+.orders-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.order-item {
+  background-color: var(--highlight-background);
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.order-item strong {
+  font-size: 1.2rem;
+  color: var(--heading-color);
+}
+
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.item {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin: 0.3rem 0;
+}
+
+/* No Orders Message */
+.no-orders {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin: 1rem 0;
+}
+
+/* Product Tally */
+.product-tally {
+  background-color: var(--container-background);
+  padding: 2rem;
+  max-width: 700px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  text-align: center;
+}
+
+.tally-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.tally-item {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin: 0.5rem 0;
+}
+
+/* Edit Profile Button */
+.profile-edit-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: var(--button-background);
+  color: var(--container-background);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.profile-edit-button:hover {
+  background-color: var(--button-hover-background);
+  transform: scale(1.05);
 }

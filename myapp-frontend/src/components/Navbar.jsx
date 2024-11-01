@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = ({ isLoggedIn, onLogout }) => {
   const navigate = useNavigate();
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleLogout = () => {
-    onLogout(); // Call onLogout passed down from App
+    onLogout();
     navigate("/");
+  };
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    if (!darkMode) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
   };
 
   return (
@@ -35,6 +45,11 @@ const Navbar = ({ isLoggedIn, onLogout }) => {
           </Link>
         </>
       )}
+
+      {/* Dark mode toggle button */}
+      <button onClick={toggleDarkMode}>
+        {darkMode ? "Light Mode" : "Dark Mode"}
+      </button>
     </div>
   );
 };
