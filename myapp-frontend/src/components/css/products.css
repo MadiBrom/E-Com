@@ -1,0 +1,161 @@
+/* Container Styling */
+.product-page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #d3c6ad; /* Slightly darker, warmer background */
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(24, 28, 20, 0.3); /* Deeper shadow for emphasis */
+  border: 2px solid #4a4f42; /* Subtle border for contrast */
+}
+
+/* Page Title */
+.product-page-container h2 {
+  font-size: 1.8rem;
+  color: #181c14; /* High-contrast title color */
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #697565; /* Bottom border for visual separation */
+  padding-bottom: 0.5rem;
+}
+
+/* Product List Styling */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Product Card Styling */
+.product-card {
+  background-color: #ecdfcc; /* Light background for contrast with container */
+  border: 1px solid #697565; /* Slight border for definition */
+  border-radius: 10px;
+  padding: 1rem;
+  max-width: 220px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(24, 28, 20, 0.15); /* Elevated shadow for depth */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(24, 28, 20, 0.2); /* Enhanced shadow on hover */
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  color: #3c3d37; /* Medium-dark text for readability */
+  margin: 0.5rem 0;
+}
+
+.product-card p {
+  font-size: 0.95rem;
+  color: #4a4f42; /* Secondary text color */
+  margin: 0.3rem 0;
+}
+
+.product-card button {
+  background-color: #697565; /* Neutral button background */
+  color: #ecdfcc; /* Light text color */
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.product-card button:hover {
+  background-color: #3c3d37; /* Darker on hover */
+  transform: translateY(-2px); /* Subtle lift effect */
+}
+
+/* Cart Styling */
+.cart-title {
+  font-size: 1.6rem;
+  color: #181c14; /* High-contrast color */
+  margin-top: 2rem;
+  text-align: center;
+  border-bottom: 2px solid #4a4f42; /* Bottom border for hierarchy */
+  padding-bottom: 0.5rem;
+}
+
+.cart-container {
+  padding: 1rem;
+  margin-top: 1.5rem;
+  background-color: #ecdfcc; /* Background color for cart container */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(24, 28, 20, 0.15); /* Subtle shadow */
+  border: 1px solid #697565; /* Border for container structure */
+}
+
+.cart-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.cart-container li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2eee4; /* Very light background for contrast */
+  padding: 0.7rem 1rem;
+  border-radius: 5px;
+  margin: 0.3rem 0;
+  border: 1px solid #4a4f42; /* Defined border for each item */
+}
+
+.cart-container li p {
+  font-size: 1rem;
+  color: #4a4f42; /* Secondary text color */
+  margin: 0;
+}
+
+.cart-item-name {
+  font-weight: 600;
+  color: #3c3d37; /* Main item name color */
+}
+
+.cart-item-price {
+  color: #3c3d37;
+  font-size: 0.95rem;
+}
+
+/* Cart Total and Empty Message */
+.cart-total {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #181c14; /* High contrast for emphasis */
+  margin-top: 1rem;
+  text-align: right;
+}
+
+.empty-cart-message {
+  font-style: italic;
+  color: #697565; /* Subtle text for empty state */
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* Purchase Button */
+.purchase-button {
+  background-color: #181c14; /* Dark button for contrast */
+  color: #ecdfcc; /* Light text */
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  margin-top: 1rem;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+}
+
+.purchase-button:hover {
+  background-color: #3c3d37; /* Darker on hover */
+  transform: translateY(-2px); /* Lift effect */
+}

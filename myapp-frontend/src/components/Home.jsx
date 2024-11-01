@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./Home.css"; // Make sure to import the CSS file
 
 const Home = () => {
   const [goldToAdd, setGoldToAdd] = useState(0);
@@ -32,7 +33,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="home-container">
       <h1>Hello!</h1>
       <h2>Current Gold Balance: {user ? user.gold.toFixed(2) : "0.00"} Gold</h2>
       <div>

@@ -1,0 +1,121 @@
+/* Wrapper for main layout */
+.profile-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 90vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Profile container styling */
+.profile-container {
+  width: 65%;
+  padding: 2rem;
+  background-color: #d3c6ad; /* Richer, warm-toned background for better contrast */
+  border-radius: 10px;
+  box-shadow: 0px 6px 15px rgba(24, 28, 20, 0.4); /* Deeper shadow for depth */
+  border: 2px solid #4a4f42; /* Slightly bolder border for emphasis */
+}
+
+/* Sidebar for product tally */
+.product-tally {
+  width: 30%;
+  padding: 1.5rem;
+  margin-left: 1rem;
+  background-color: #d3c6ad; /* Contrasting background for sidebar */
+  border-radius: 10px;
+  box-shadow: 0px 6px 15px rgba(24, 28, 20, 0.4); /* Consistent shadow */
+  border: 2px solid #4a4f42;
+}
+
+/* Headings */
+.profile-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #181c14; /* High-contrast main heading */
+  text-align: center;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #697565; /* Emphasized bottom border for hierarchy */
+  padding-bottom: 0.5rem;
+}
+
+.profile-subheading {
+  font-size: 1.25rem;
+  color: #4a4f42; /* Medium contrast */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.orders-heading,
+.tally-heading {
+  font-size: 1.5rem;
+  color: #181c14;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-bottom: 2px solid #4a4f42; /* Consistent visual separator */
+  padding-bottom: 0.5rem;
+}
+
+/* Orders list */
+.orders-list {
+  list-style: none;
+  padding: 0;
+}
+
+.order-item {
+  background-color: #f2eee4; /* Soft but distinct background */
+  border: 2px solid #4a4f42; /* Defined border for item separation */
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0px 4px 8px rgba(24, 28, 20, 0.15); /* Slightly lifted shadow */
+}
+
+/* Order item details */
+.order-item strong {
+  font-size: 1.125rem;
+  color: #3c3d37;
+}
+
+.order-item p {
+  color: #4a4f42;
+  margin: 0.25rem 0;
+}
+
+/* Nested lists for items within each order */
+.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.item {
+  color: #3c3d37;
+  margin: 0.25rem 0;
+}
+
+/* Product tally list styling */
+.tally-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tally-item {
+  color: #3c3d37;
+  font-size: 1rem;
+  margin: 0.25rem 0;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #4a4f42; /* Stronger separator for visibility */
+}
+
+/* Empty orders message */
+.no-orders {
+  color: #697565;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 1rem;
+  font-style: italic;
+  opacity: 0.8;
+}

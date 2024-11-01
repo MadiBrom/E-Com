@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -14,235 +14,84 @@
 }
 
 body {
-  background-color: #f0f2f5;
-  color: #333;
+  background-color: #ecdfcc; /* Light background */
+  color: #3c3d37; /* Main text color */
   line-height: 1.6;
 }
 
 /* Navbar Styles */
 .navbar {
-  background-color: #333;
-  padding: 1rem;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.navbar button {
-  background-color: #555;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.navbar button:hover {
-  background-color: #777;
+  justify-content: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    #181c14,
+    #3c3d37
+  ); /* Gradient background */
+  padding: 0;
+  z-index: 1000;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15); /* Depth for modern look */
 }
 
 .navbar a {
   text-decoration: none;
-  color: inherit;
 }
 
-/* Home Page Styles */
-h1 {
-  text-align: center;
-  margin: 2rem 0;
-  color: #333;
-}
-
-/* Products Page Styles */
-.product-page-container {
-  padding: 1rem;
-}
-
-.page-title {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #333;
-}
-
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-}
-
-.product-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 1rem;
-  max-width: 200px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-}
-
-.product-info h3 {
-  margin: 0.5rem 0;
-  color: #333;
-}
-
-.product-info p {
-  margin: 0.3rem 0;
-  color: #555;
-}
-
-.add-to-cart-btn {
-  background-color: #28a745;
-  color: #fff;
-  padding: 0.5rem 1rem;
+.navbar button {
+  background-color: transparent; /* Transparent to show gradient background */
+  color: #ecdfcc; /* Light text color */
   border: none;
-  border-radius: 5px;
+  padding: 15px 20px;
+  font-size: 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease, transform 0.2s ease, border-bottom 0.3s ease;
+  border-bottom: 3px solid transparent;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
 }
 
-.add-to-cart-btn:hover {
-  background-color: #218838;
-}
-
-/* Cart Styles */
-.cart-title {
-  margin-top: 2rem;
-  text-align: center;
-  color: #333;
-}
-
-.cart-container {
-  padding: 1rem;
-}
-
-.cart-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 1rem 0;
-}
-
-.cart-item {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 1rem;
-  margin: 0.5rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.quantity-controls button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 0.3rem 0.6rem;
+.navbar button:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 200%;
+  height: 200%;
+  background: rgba(
+    236,
+    223,
+    204,
+    0.2
+  ); /* Subtle light color for hover effect */
   border-radius: 50%;
-  cursor: pointer;
-}
-
-.quantity-controls button:hover {
-  background-color: #0056b3;
-}
-
-.remove-from-cart-btn {
-  background-color: #dc3545;
-  color: #fff;
-  padding: 0.3rem 0.6rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.remove-from-cart-btn:hover {
-  background-color: #c82333;
-}
-
-.cart-total {
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.empty-cart-message {
-  text-align: center;
-  color: #555;
-  font-style: italic;
-}
-
-/* Profile Page Styles */
-.profile-container {
-  text-align: center;
-  padding: 2rem;
-}
-
-.profile-container h1 {
-  color: #333;
-}
-
-.profile-container h2 {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 1.5rem;
-}
-
-.profile-container h3 {
-  font-size: 1.5rem;
-  color: #4a90e2;
-  margin-top: 2rem;
-}
-
-.profile-container ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.profile-container li {
-  margin-bottom: 1rem;
-  background-color: #f9f9fb;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-}
-
-.profile-container strong {
-  font-size: 1.1rem;
-  color: #333;
-}
-
-.profile-container p {
-  font-size: 1rem;
-  color: #666;
-}
-
-.profile-container h4 {
-  font-size: 1.1rem;
-  color: #4a90e2;
-  margin-top: 1rem;
-}
-
-.profile-container p.no-orders {
-  font-style: italic;
-  color: #999;
-}
-
-/* Button Styling */
-button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
   transition: all 0.3s ease;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
 }
 
-button:hover {
-  opacity: 0.9;
+.navbar button:hover:before {
+  transform: translate(-50%, -50%) scale(1); /* Subtle circle effect */
+}
+
+.navbar button:hover {
+  color: #ecdfcc; /* Lighter color on hover */
+  border-bottom: 3px solid #697565; /* Accent color for hover */
+  transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.navbar button:focus {
+  outline: none;
+  color: #ecdfcc;
+  border-bottom: 3px solid #3c3d37; /* Darker accent for focus */
+}
+
+.navbar button.active {
+  color: #ecdfcc;
+  border-bottom: 3px solid #181c14; /* Dark accent for active tab */
+  font-weight: bold;
 }
