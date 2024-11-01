@@ -1,34 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import NavBar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Products from "./components/Products";
 import Profile from "./components/Profile";
-
-import "./App.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import "./App.css";
 
 function App() {
-  // Define user and setUser state
   const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Log user state to verify it updates after login
-  console.log("User state in App:", user);
+  // Load user data from localStorage on initial render
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    const storedToken = localStorage.getItem("token");
+    if (storedUser && storedToken) {
+      setUser(JSON.parse(storedUser));
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogin = (userData) => {
+    setUser(userData);
+    setIsLoggedIn(true);
+    localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("token", userData.token);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    setIsLoggedIn(false);
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+  };
 
   return (
     <div>
-      <NavBar />
+      <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
       <Routes>
         <Route path="/products" element={<Products />} />
-        {/* Add more routes here as needed */}
         <Route path="/" element={<Home />} />
-        <Route
-          path="/profile"
-          element={<Profile user={user} setUser={setUser} />}
-        />{" "}
-        <Route path="/login" element={<Login setUser={setUser} />} />{" "}
-        <Route path="/register" element={<Register setUser={setUser} />} />
+        <Route path="/profile" element={<Profile user={user} />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   );

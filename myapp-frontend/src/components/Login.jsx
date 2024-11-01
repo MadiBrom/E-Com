@@ -2,12 +2,11 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { loginUser } from "../API";
 
-const Login = ({ setUser }) => {
+const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,11 +16,8 @@ const Login = ({ setUser }) => {
 
     try {
       const response = await loginUser(email, password);
-
       if (response && response.token && response.user) {
-        localStorage.setItem("token", response.token);
-        localStorage.setItem("user", JSON.stringify(response.user));
-        setUser(response.user);
+        onLogin(response.user); // Call onLogin from props to update App state
         navigate("/profile");
       } else {
         setError(response.error || "Invalid login credentials.");

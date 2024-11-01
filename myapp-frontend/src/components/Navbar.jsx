@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const Navbar = ({ isLoggedIn, onLogout }) => {
   const navigate = useNavigate();
 
-  const handleLogin = () => setIsLoggedIn(true);
-
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    navigate("/"); // Redirect to home page after logout
+    onLogout(); // Call onLogout passed down from App
+    navigate("/");
   };
 
   return (
@@ -21,20 +18,17 @@ const Navbar = () => {
         <button>Product</button>
       </Link>
 
-      {/* Conditional rendering for Profile */}
-      {isLoggedIn && (
-        <Link to="/profile">
-          <button>Profile</button>
-        </Link>
-      )}
-
-      {/* Conditional rendering for Login/Register or Logout */}
       {isLoggedIn ? (
-        <button onClick={handleLogout}>Logout</button>
+        <>
+          <Link to="/profile">
+            <button>Profile</button>
+          </Link>
+          <button onClick={handleLogout}>Logout</button>
+        </>
       ) : (
         <>
           <Link to="/login">
-            <button onClick={handleLogin}>Login</button>
+            <button>Login</button>
           </Link>
           <Link to="/register">
             <button>Register</button>
