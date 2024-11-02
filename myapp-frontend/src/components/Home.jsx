@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const Home = () => {
+  const [lastGameResult, setLastGameResult] = useState("");
   const [user, setUser] = useState(null);
   const [clickCount, setClickCount] = useState(0); // Counts clicks for Clicker Game
   const [timer, setTimer] = useState(10); // 10-second timer for Clicker Game
@@ -90,28 +91,39 @@ const Home = () => {
     }
   };
 
-  // Finish Clicker Game and update user's gold balance
   const finishClickerGame = () => {
-    const earnedGold = clickCount;
-    updateGold(earnedGold);
+    const earnedGold = clickCount; // Gold based on clicks
+    updateGold(earnedGold); // Update user's gold balance
+
+    // Log and display the game result
+    const resultMessage = `You clicked ${clickCount} times and earned ${earnedGold} gold!`;
+    setLastGameResult(resultMessage); // Set the result message for display
+
+    console.log(resultMessage); // Console log
     setGameActive(false);
     setSelectedGame(null); // Reset game
-    alert(
-      `Game Over! You clicked ${clickCount} times and earned ${earnedGold} gold!`
-    );
   };
 
   // Start the Riddle Game
   const startRiddleGame = () => {
-    setRiddle(riddles[Math.floor(Math.random() * riddles.length)]);
+    const selectedRiddle = riddles[Math.floor(Math.random() * riddles.length)];
+    setRiddle({
+      ...selectedRiddle,
+      options: shuffleArray([...selectedRiddle.options]), // Shuffle the options
+    });
     setSelectedAnswer(""); // Reset selected answer
+  };
+
+  // Function to shuffle an array
+  const shuffleArray = (array) => {
+    return array.sort(() => Math.random() - 0.5);
   };
 
   // Handle Riddle Answer Submission
   const submitRiddleAnswer = () => {
     if (selectedAnswer === riddle.answer) {
       updateGold(10); // Award 10 gold for correct answer
-      alert("Correct! You've earned 10 gold.");
+      alert("Correct! You've earned 10 🪙.");
     } else {
       alert("Wrong answer! Try again next time.");
     }
@@ -131,8 +143,8 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <h1>Hello!</h1>
-      <h2>Current Gold Balance: {user ? user.gold.toFixed(0) : "0"} Gold</h2>
+      <h1>Play a Game to Earn Gold!</h1>
+      <h2>{user ? user.gold.toFixed(0) : "0"} 🪙</h2>
 
       <div>
         <button onClick={startRandomGame} disabled={gameActive}>

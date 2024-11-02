@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import products from "./products"; // Import products data
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [orders, setOrders] = useState([]);
   const [productTally, setProductTally] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,9 +23,13 @@ const Profile = () => {
     const fetchOrders = () => {
       const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
       setOrders(storedOrders);
-      calculateProductTally(storedOrders);
     };
 
+    fetchUserData();
+    fetchOrders();
+  }, [navigate]);
+
+  useEffect(() => {
     const calculateProductTally = (orders) => {
       const tally = {};
       orders.forEach((order) => {
@@ -33,15 +40,30 @@ const Profile = () => {
       setProductTally(tally);
     };
 
-    fetchUserData();
-    fetchOrders();
-  }, [navigate]);
+    calculateProductTally(orders);
+  }, [orders]);
 
   const deleteOrder = (orderId) => {
-    const updatedOrders = orders.filter((order) => order.id !== orderId);
-    setOrders(updatedOrders);
-    localStorage.setItem("orders", JSON.stringify(updatedOrders));
-    calculateProductTally(updatedOrders);
+    setOrders((prevOrders) => {
+      const updatedOrders = prevOrders.filter((order) => order.id !== orderId);
+      localStorage.setItem("orders", JSON.stringify(updatedOrders));
+      return updatedOrders;
+    });
+  };
+
+  const openModal = (order) => {
+    setSelectedOrder(order);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedOrder(null);
+    setIsModalOpen(false);
+  };
+
+  const getDescription = (itemName) => {
+    const product = products.find((product) => product.name === itemName);
+    return product ? product.description : "No description available";
   };
 
   return (
@@ -53,7 +75,7 @@ const Profile = () => {
         <h2 className="profile-subheading">
           Email: {user ? user.email : "Loading..."}
         </h2>
-        <h3>Current Gold Balance: {user ? user.gold.toFixed(0) : "0"} Gold</h3>
+        <h3> {user ? user.gold.toFixed(0) : "0"} 🪙 </h3>
         <h3 className="orders-heading">Your Orders:</h3>
         {orders.length > 0 ? (
           <ul className="orders-list">
@@ -61,7 +83,7 @@ const Profile = () => {
               <li key={order.id} className="order-item">
                 <strong>Order #{order.id}</strong>
                 <p>Date: {new Date(order.date).toLocaleDateString()}</p>
-                <p>Total: {order.total.toFixed(0)} Gold</p>
+                <p>Total: {order.total.toFixed(0)} 🪙</p>
                 <h4>Items:</h4>
                 <ul className="item-list">
                   {order.items.map((item, index) => (
@@ -75,6 +97,12 @@ const Profile = () => {
                   className="delete-order-button"
                 >
                   Delete Order
+                </button>
+                <button
+                  onClick={() => openModal(order)}
+                  className="view-details-button"
+                >
+                  View Details
                 </button>
               </li>
             ))}
@@ -97,6 +125,31 @@ const Profile = () => {
           )}
         </ul>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && selectedOrder && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>Order Details - #{selectedOrder.id}</h2>
+            <p>Date: {new Date(selectedOrder.date).toLocaleDateString()}</p>
+            <p>Total: {selectedOrder.total.toFixed(0)} 🪙</p>
+            <h4>Items:</h4>
+            <ul>
+              {selectedOrder.items.map((item, index) => (
+                <li key={index}>
+                  <strong>{item.name}</strong>
+                  <p>Price: {item.price.toFixed(0)} gp</p>
+                  <p>Quantity: {item.quantity}</p>
+                  <p>Description: {getDescription(item.name)}</p>
+                </li>
+              ))}
+            </ul>
+            <button onClick={closeModal} className="close-modal-button">
+              X
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
