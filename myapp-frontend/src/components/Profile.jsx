@@ -37,6 +37,13 @@ const Profile = () => {
     fetchOrders();
   }, [navigate]);
 
+  const deleteOrder = (orderId) => {
+    const updatedOrders = orders.filter((order) => order.id !== orderId);
+    setOrders(updatedOrders);
+    localStorage.setItem("orders", JSON.stringify(updatedOrders));
+    calculateProductTally(updatedOrders);
+  };
+
   return (
     <div className="profile-wrapper">
       <div className="profile-container">
@@ -63,6 +70,12 @@ const Profile = () => {
                     </li>
                   ))}
                 </ul>
+                <button
+                  onClick={() => deleteOrder(order.id)}
+                  className="delete-order-button"
+                >
+                  Delete Order
+                </button>
               </li>
             ))}
           </ul>
