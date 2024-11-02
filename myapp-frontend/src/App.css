@@ -7,6 +7,11 @@
   min-height: 100vh;
   width: 100%;
   padding-top: 4rem; /* Offset for fixed navbar */
+  background-color: #eee;
+}
+/* Dark Mode Styles */
+body.dark-mode #root {
+  background-color: #1e1e1e; /* Dark background for root */
 }
 
 /* Navbar Styles */
@@ -121,29 +126,6 @@ body {
 .container button:hover {
   background-color: var(--button-hover-background);
 }
-
-/* Color Palette */
-:root {
-  --background-color: #fbf1ee;
-  --text-color: #11151c;
-  --navbar-background: linear-gradient(135deg, #212d40, #364156);
-  --button-background: #7d4e57;
-  --button-hover-background: #5a4857;
-  --container-background: #f2cdc5;
-  --shadow-color: rgba(33, 45, 64, 0.2);
-}
-
-/* DARK MODE */
-.dark-mode {
-  --background-color: #11151c;
-  --text-color: #fbf1ee;
-  --navbar-background: linear-gradient(135deg, #364156, #212d40);
-  --button-background: #d66853;
-  --button-hover-background: #7d4e57;
-  --container-background: #212d40;
-  --shadow-color: rgba(242, 205, 197, 0.2);
-}
-
 /* Home Page Layout */
 .home-container {
   display: flex;

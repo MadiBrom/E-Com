@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./home.css";
 
 const Home = () => {
   const [lastGameResult, setLastGameResult] = useState("");
@@ -143,41 +144,54 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <h1>Play a Game to Earn Gold!</h1>
-      <h2>{user ? user.gold.toFixed(0) : "0"} 🪙</h2>
+      <h1 className="home-title">Play a Game to Earn Gold!</h1>
+      <h2 className="home-gold">{user ? user.gold.toFixed(0) : "0"} 🪙</h2>
 
       <div>
-        <button onClick={startRandomGame} disabled={gameActive}>
+        <button
+          className="home-game"
+          onClick={startRandomGame}
+          disabled={gameActive}
+        >
           {gameActive ? "Game in Progress..." : "Start Random Game"}
         </button>
       </div>
 
-      {gameActive && selectedGame === "clicker" && (
-        <div className="clicker-game">
-          <h3>Click as fast as you can! Time left: {timer}s</h3>
-          <button onClick={handleButtonClick}>Click Me!</button>
-          <p>Clicks: {clickCount}</p>
-        </div>
-      )}
+      <section className="game">
+        {gameActive && selectedGame === "clicker" && (
+          <div className="clicker-game">
+            <h3 className="clicker">
+              Click as fast as you can! Time left: {timer}s
+            </h3>
+            <button className="hit" onClick={handleButtonClick}>
+              Click Me!
+            </button>
+            <p>Clicks: {clickCount}</p>
+          </div>
+        )}
 
-      {gameActive && selectedGame === "riddle" && riddle && (
-        <div className="riddle-game">
-          <h3>{riddle.question}</h3>
-          {riddle.options.map((option, index) => (
-            <label key={index}>
-              <input
-                type="radio"
-                name="riddle"
-                value={option}
-                checked={selectedAnswer === option}
-                onChange={() => setSelectedAnswer(option)}
-              />
-              {option}
-            </label>
-          ))}
-          <button onClick={submitRiddleAnswer}>Submit Answer</button>
-        </div>
-      )}
+        {gameActive && selectedGame === "riddle" && riddle && (
+          <div className="riddle-game">
+            <h3 className="riddle">{riddle.question}</h3>
+            {riddle.options.map((option, index) => (
+              <label className="label" key={index}>
+                <input
+                  className="input"
+                  type="radio"
+                  name="riddle"
+                  value={option}
+                  checked={selectedAnswer === option}
+                  onChange={() => setSelectedAnswer(option)}
+                />
+                {option}
+              </label>
+            ))}
+            <button className="submit" onClick={submitRiddleAnswer}>
+              Submit Answer
+            </button>
+          </div>
+        )}
+      </section>
     </div>
   );
 };
