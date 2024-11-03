@@ -45,6 +45,22 @@ const Profile = () => {
 
   const deleteOrder = (orderId) => {
     setOrders((prevOrders) => {
+      const orderToDelete = prevOrders.find((order) => order.id === orderId);
+      if (!orderToDelete) return prevOrders;
+
+      // Calculate the total gold from the order to be deleted
+      const totalGoldToReturn = orderToDelete.total;
+
+      // Update user's gold balance
+      setUser((prevUser) => {
+        const updatedUser = {
+          ...prevUser,
+          gold: prevUser.gold + totalGoldToReturn, // Add back the gold from the deleted order
+        };
+        localStorage.setItem("user", JSON.stringify(updatedUser)); // Save updated user to local storage
+        return updatedUser;
+      });
+
       const updatedOrders = prevOrders.filter((order) => order.id !== orderId);
       localStorage.setItem("orders", JSON.stringify(updatedOrders));
       return updatedOrders;
