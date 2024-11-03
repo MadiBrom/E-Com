@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import Products from "./components/Products";
+import Products from "./components/Products.jsx";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Register from "./components/Register";
