@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0; /* Light background for contrast */
+  overflow: hidden; /* Prevent scrolling */
+}
+
+h1,
+h2 {
+  color: #333; /* Darker text for visibility */
+  text-align: center; /* Center text */
+}
+
+h1 {
+  margin-top: 20px; /* Add some space at the top */
+  font-size: 2rem; /* Larger font for the main title */
+}
+
+h2 {
+  margin-bottom: 20px; /* Add space below the sub-title */
+  font-size: 1.5rem; /* Slightly larger font for the dot count */
+}
+
+.game-over-message {
+  text-align: center;
+  font-size: 2rem; /* Large font for game over message */
+  color: #e74c3c; /* Red color for emphasis */
+}
+
+.game-container {
+  position: fixed; /* Use fixed positioning */
+  top: 90px;
+  left: 0;
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height */
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.dots-container {
+  position: relative; /* Relative positioning for content inside */
+  z-index: 10; /* Ensure this is above dots */
+}
+
+.dots {
+  position: absolute; /* Ensure dots are absolutely positioned */
+  width: 100%; /* Make sure it takes full width */
+  height: 100%; /* Make sure it takes full height */
+  overflow: hidden; /* Hide overflow if any */
+}

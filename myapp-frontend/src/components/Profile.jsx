@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import products from "./product.js"; // Import products data
+import "./profile.css";
 
 const Profile = () => {
   const [user, setUser] = useState(null);

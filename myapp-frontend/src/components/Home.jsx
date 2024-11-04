@@ -12,7 +12,8 @@ const Home = () => {
   }, []);
 
   const startRandomGame = () => {
-    navigate("/riddles"); // Now this will correctly navigate to "/riddles"
+    const randomGame = Math.random() < 0.5 ? "/riddles" : "/click"; // Randomly choose between the two routes
+    navigate(randomGame); // Now this will randomly navigate to either "/riddles" or "/click"
     console.log("Random game started!");
   };
 
