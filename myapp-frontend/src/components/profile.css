@@ -14,13 +14,19 @@
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #fefefe; /* Light background */
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
   max-height: 80%; /* Limit height for scrolling */
   overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Dark Mode Modal Content */
+.dark-mode .modal-content {
+  background-color: #222; /* Dark background */
+  border: 1px solid #555; /* Darker border */
 }
 
 /* The Close Button */
@@ -36,4 +42,284 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* General Profile Page Styling */
+.profile-wrapper {
+  display: flex;
+  gap: 40px;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Dark Mode General Profile Page */
+.dark-mode .profile-wrapper {
+  color: #ddd; /* Light text for dark mode */
+}
+
+/* Profile Heading */
+.profile-heading {
+  font-size: 2.5em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, #4caf50, #2196f3);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: fadeIn 1.2s ease-out;
+}
+
+/* Dark Mode Profile Heading */
+.dark-mode .profile-heading {
+  color: #fff; /* White text for dark mode */
+}
+
+/* Profile Subheading */
+.profile-subheading {
+  font-size: 1.5em;
+  color: #555;
+  text-align: center;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+/* Dark Mode Profile Subheading */
+.dark-mode .profile-subheading {
+  color: #aaa; /* Lighter gray for dark mode */
+}
+
+/* Orders Heading and Tally Heading */
+.orders-heading,
+.tally-heading {
+  font-size: 1.5em;
+  color: #444;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Dark Mode Orders Heading and Tally Heading */
+.dark-mode .orders-heading,
+.dark-mode .tally-heading {
+  color: #ccc; /* Light gray for dark mode */
+}
+
+/* Profile Container Styling */
+.profile-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 60vw;
+}
+
+/* Dark Mode Profile Container */
+.dark-mode .profile-container {
+  background-color: #333; /* Darker background */
+  border: 1px solid #444; /* Dark border */
+}
+
+/* Orders List */
+.orders-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  gap: 16px; /* Space between each item */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each Order Item */
+.order-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+/* Dark Mode Each Order Item */
+.dark-mode .order-item {
+  background-color: #444; /* Dark background for items */
+  border: 1px solid #555; /* Darker border */
+}
+
+/* Order Details */
+.order-item strong {
+  font-size: 1.1em;
+}
+
+/* Dark Mode Order Details */
+.dark-mode .order-item strong {
+  color: #fff; /* Light text for dark mode */
+}
+
+.order-item p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+/* Dark Mode Order Item Paragraph */
+.dark-mode .order-item p {
+  color: #ddd; /* Light text for dark mode */
+}
+
+/* Item List within Each Order */
+.item-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 0 10px;
+}
+
+/* Individual Item Styling */
+.item {
+  font-size: 0.9em;
+}
+
+/* Empty Order Message */
+.no-orders {
+  font-style: italic;
+  color: #777;
+}
+
+/* Dark Mode Empty Order Message */
+.dark-mode .no-orders {
+  color: #aaa; /* Lighter color for dark mode */
+}
+
+/* Product Tally Section */
+.product-tally {
+  height: fit-content;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Product Tally Section */
+.dark-mode .product-tally {
+  background-color: #333; /* Dark background */
+  border: 1px solid #444; /* Dark border */
+}
+
+/* Tally List */
+.tally-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Tally Item */
+.tally-item {
+  font-size: 1em;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Dark Mode Tally Item */
+.dark-mode .tally-item {
+  border-bottom: 1px solid #555; /* Darker separator */
+}
+
+/* No Products Message */
+.product-tally p {
+  font-style: italic;
+  color: #777;
+}
+
+/* Dark Mode No Products Message */
+.dark-mode .product-tally p {
+  color: #aaa; /* Lighter color for dark mode */
+}
+
+/* CSS for Modal Overlay */
+.modal {
+  position: fixed; /* Keeps it in place relative to the viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000; /* Ensures it sits above other content */
+}
+
+/* Dark Mode Modal Overlay */
+.dark-mode .modal {
+  background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+}
+
+/* CSS for Modal Content */
+.modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: left;
+}
+
+/* Dark Mode Modal Content */
+.dark-mode .modal-content {
+  background-color: #222; /* Dark background */
+  border: 1px solid #555; /* Darker border */
+}
+
+/* Close Button Styling */
+.close-modal-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 14px;
+}
+
+/* Dark Mode Close Button Styling */
+.dark-mode .close-modal-button {
+  background-color: #c62828; /* Darker red */
+}
+
+/* Modal Content Styling */
+.modal-content h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+}
+
+/* Dark Mode Modal Content Title */
+.dark-mode .modal-content h2 {
+  color: #fff; /* Light title for dark mode */
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Dark Mode Modal List Items */
+.dark-mode .modal-content li {
+  color: #ddd; /* Light text for dark mode */
+}
+
+.modal-content li {
+  margin-bottom: 10px;
 }

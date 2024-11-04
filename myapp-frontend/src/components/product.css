@@ -144,3 +144,49 @@ h2 {
   font-weight: bold;
   margin-bottom: 10px;
 }
+
+/* Dark Mode Styles */
+body.dark-mode .product-page-container {
+  background-color: #333; /* Dark background for the container */
+  color: #f9f9f9; /* Light text color */
+}
+
+body.dark-mode h2 {
+  color: #fff; /* Header color in dark mode */
+}
+
+body.dark-mode .product-card {
+  background-color: #444; /* Darker card background */
+  border: 1px solid #555; /* Darker border */
+}
+
+body.dark-mode .product-card h3 {
+  color: #f9f9f9; /* Light color for product titles */
+}
+
+body.dark-mode .product-card p,
+body.dark-mode .cart-item-price,
+body.dark-mode .empty-cart-message {
+  color: #ccc; /* Light gray for other text */
+}
+
+body.dark-mode .cart-container {
+  background-color: #222; /* Dark background for the cart */
+  border: 1px solid #555; /* Darker border for the cart */
+}
+
+body.dark-mode .cart-title {
+  color: #fff; /* Light color for cart title */
+}
+
+body.dark-mode .purchase-button {
+  background-color: #66bb6a; /* Slightly different green for dark mode */
+}
+
+body.dark-mode .purchase-button:hover {
+  background-color: #5cbf60; /* Darker hover effect */
+}
+
+body.dark-mode .gold-amount {
+  color: #f9f9f9; /* Light color for gold amount */
+}
