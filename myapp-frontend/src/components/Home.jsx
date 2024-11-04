@@ -1,19 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Change this line
+import { useNavigate } from "react-router-dom";
 import "./home.css";
 
 const Home = () => {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate(); // Use useNavigate instead of Navigate
+  const navigate = useNavigate();
 
-  useEffect(() => {
+  // Function to fetch user data from localStorage
+  const fetchUser = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser) setUser(storedUser);
+    setUser(storedUser); // Update user state
+  };
+
+  // Initial fetch of user data
+  useEffect(() => {
+    fetchUser();
   }, []);
 
+  // Update user state and localStorage when needed
+  const updateGold = (amount) => {
+    if (user) {
+      const updatedUser = { ...user, gold: user.gold + amount };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+      setUser(updatedUser); // Update local state
+    }
+  };
+
   const startRandomGame = () => {
-    const randomGame = Math.random() < 0.5 ? "/riddles" : "/click"; // Randomly choose between the two routes
-    navigate(randomGame); // Now this will randomly navigate to either "/riddles" or "/click"
+    const games = ["/riddles", "/prize", "/click"]; // Array of game routes
+    const randomGame = games[Math.floor(Math.random() * games.length)]; // Randomly select a game
+    navigate(randomGame);
     console.log("Random game started!");
   };
 

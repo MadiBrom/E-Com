@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import "./App.css";
 import Riddles from "./games/Riddles.jsx";
 import Click from "./games/Click.jsx";
+import Prize from "./games/prize.jsx";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -49,6 +50,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/riddles" element={<Riddles />} />
         <Route path="/click" element={<Click />} />
+        <Route path="/prize" element={<Prize />} />
       </Routes>
     </div>
   );
