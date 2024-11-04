@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./product.css";
 
 const Products = () => {
   const products = [
@@ -126,7 +127,10 @@ const Products = () => {
 
     let storedUser = JSON.parse(localStorage.getItem("user"));
 
-    if (storedUser.gold < totalPrice) {
+    // Display the user's gold amount in a variable
+    const userGold = storedUser?.gold || 0;
+
+    if (userGold < totalPrice) {
       alert("Not enough gold for this purchase!");
       return;
     }
@@ -152,6 +156,10 @@ const Products = () => {
     alert("Thank you for your purchase!");
   };
 
+  // Get the user's gold from localStorage
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const userGold = storedUser?.gold || 0;
+
   return (
     <div className="product-page-container">
       <h2>Shop Magical Items</h2>
@@ -168,6 +176,8 @@ const Products = () => {
 
       <h2 className="cart-title">Your Cart</h2>
       <div className="cart-container">
+        {/* Display the user's gold amount */}
+        <p className="gold-amount">Your Gold: {userGold} gp</p>
         {cart.length > 0 ? (
           <>
             <ul>

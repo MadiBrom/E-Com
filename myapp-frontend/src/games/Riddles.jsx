@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./riddle.css";
 
 const Riddles = () => {
   const navigate = useNavigate();
@@ -106,12 +107,16 @@ const Riddles = () => {
 
   return (
     <div>
-      <h1>Choose Correctly</h1>
-      <h2>Earn Gold</h2>
-      <p>{question}</p>
-      <div className="answers">
+      <h1 className="riddle-title">Choose Correctly</h1>
+      <h2 className="riddle-subtitle">Earn Gold</h2>
+      <p className="riddle">{question}</p>
+      <div className="riddle-answers">
         {shuffledAnswers.map((answer, index) => (
-          <button key={index} onClick={() => handleAnswerClick(answer)}>
+          <button
+            className="answer"
+            key={index}
+            onClick={() => handleAnswerClick(answer)}
+          >
             {answer}
           </button>
         ))}
