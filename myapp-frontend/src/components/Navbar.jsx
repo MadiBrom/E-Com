@@ -24,8 +24,11 @@ const Navbar = ({ isLoggedIn, onLogout }) => {
       <Link to="/">
         <button>Home</button>
       </Link>
+      <Link to="/click">
+        <button>Click</button>
+      </Link>
       <Link to="/products">
-        <button>Product</button>
+        <button>Shop</button>
       </Link>
 
       {isLoggedIn ? (

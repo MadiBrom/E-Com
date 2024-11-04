@@ -5,7 +5,10 @@ import products from "./product.js"; // Import products data
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [orders, setOrders] = useState([]);
-  const [productTally, setProductTally] = useState({});
+  const [productTally, setProductTally] = useState(() => {
+    // Load productTally from localStorage on initial load
+    return JSON.parse(localStorage.getItem("productTally")) || {};
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const navigate = useNavigate();
@@ -29,26 +32,16 @@ const Profile = () => {
     fetchOrders();
   }, [navigate]);
 
+  // Save productTally to localStorage whenever it changes
   useEffect(() => {
-    const calculateProductTally = (orders) => {
-      const tally = {};
-      orders.forEach((order) => {
-        order.items.forEach((item) => {
-          tally[item.name] = (tally[item.name] || 0) + item.quantity;
-        });
-      });
-      setProductTally(tally);
-    };
-
-    calculateProductTally(orders);
-  }, [orders]);
+    localStorage.setItem("productTally", JSON.stringify(productTally));
+  }, [productTally]);
 
   const deleteOrder = (orderId) => {
     setOrders((prevOrders) => {
       const orderToDelete = prevOrders.find((order) => order.id === orderId);
       if (!orderToDelete) return prevOrders;
 
-      // Calculate the total gold from the order to be deleted
       const totalGoldToReturn = orderToDelete.total;
 
       // Update user's gold balance
@@ -65,6 +58,30 @@ const Profile = () => {
       localStorage.setItem("orders", JSON.stringify(updatedOrders));
       return updatedOrders;
     });
+  };
+
+  const acceptOrder = (orderId) => {
+    const orderToAccept = orders.find((order) => order.id === orderId);
+    if (!orderToAccept) return;
+
+    // Update product tally based on accepted order
+    setProductTally((prevTally) => {
+      const newTally = { ...prevTally };
+      orderToAccept.items.forEach((item) => {
+        newTally[item.name] = (newTally[item.name] || 0) + item.quantity;
+      });
+      return newTally;
+    });
+
+    // Remove the accepted order from the orders list
+    setOrders((prevOrders) => {
+      const updatedOrders = prevOrders.filter((order) => order.id !== orderId);
+      localStorage.setItem("orders", JSON.stringify(updatedOrders)); // Update localStorage for orders
+      return updatedOrders;
+    });
+
+    // Close the modal after accepting the order
+    closeModal();
   };
 
   const openModal = (order) => {
@@ -109,16 +126,16 @@ const Profile = () => {
                   ))}
                 </ul>
                 <button
-                  onClick={() => deleteOrder(order.id)}
-                  className="delete-order-button"
-                >
-                  Delete Order
-                </button>
-                <button
                   onClick={() => openModal(order)}
                   className="view-details-button"
                 >
                   View Details
+                </button>
+                <button
+                  onClick={() => deleteOrder(order.id)}
+                  className="delete-order-button"
+                >
+                  Delete Order
                 </button>
               </li>
             ))}
@@ -160,6 +177,12 @@ const Profile = () => {
                 </li>
               ))}
             </ul>
+            <button
+              onClick={() => acceptOrder(selectedOrder.id)}
+              className="accept-order-button"
+            >
+              Accept Order
+            </button>
             <button onClick={closeModal} className="close-modal-button">
               X
             </button>

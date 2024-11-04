@@ -66,31 +66,43 @@ const Riddles = () => {
   ];
 
   const [currentRiddleIndex, setCurrentRiddleIndex] = useState(0);
+  const [shuffledAnswers, setShuffledAnswers] = useState([]);
   const [feedback, setFeedback] = useState("");
 
-  // useEffect to set a random riddle index on component mount
+  // Function to shuffle answers
+  const shuffleArray = (array) => {
+    return array.sort(() => Math.random() - 0.5);
+  };
+
   useEffect(() => {
+    // Select a random riddle on component mount
     const randomIndex = Math.floor(Math.random() * riddles.length);
     setCurrentRiddleIndex(randomIndex);
   }, []);
 
+  useEffect(() => {
+    // Shuffle answers whenever the riddle index changes
+    setShuffledAnswers(shuffleArray([...riddles[currentRiddleIndex].answers]));
+  }, [currentRiddleIndex]);
+
   const handleAnswerClick = (answer) => {
     const isCorrect = answer === riddles[currentRiddleIndex].correct;
+
     setFeedback(isCorrect ? "Correct!" : "Try again!");
 
-    // Award gold and navigate back to home page if the answer is correct
-    if (isCorrect) {
-      const storedUser = JSON.parse(localStorage.getItem("user"));
-      const updatedUser = { ...storedUser, gold: storedUser.gold + 10 };
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
-    }
+    setTimeout(() => {
+      if (isCorrect) {
+        // Award gold and navigate back to home page if the answer is correct
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+        const updatedUser = { ...storedUser, gold: storedUser.gold + 10 };
+        localStorage.setItem("user", JSON.stringify(updatedUser));
+      }
+      // Navigate back to home page regardless of whether the answer was correct or not
+      navigate("/");
+    }, 1500); // Delay navigation by 1.5 seconds
   };
 
-  const { question, answers } = riddles[currentRiddleIndex];
+  const { question } = riddles[currentRiddleIndex];
 
   return (
     <div>
@@ -98,7 +110,7 @@ const Riddles = () => {
       <h2>Earn Gold</h2>
       <p>{question}</p>
       <div className="answers">
-        {answers.map((answer, index) => (
+        {shuffledAnswers.map((answer, index) => (
           <button key={index} onClick={() => handleAnswerClick(answer)}>
             {answer}
           </button>

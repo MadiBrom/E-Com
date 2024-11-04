@@ -111,31 +111,29 @@ const Products = () => {
     });
   };
 
+  const removeFromCart = (productId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  };
+
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
 
   const handlePurchase = () => {
-    // Make a copy of the cart to use for the order before clearing it
     const cartItems = [...cart];
-
-    // Clear the cart immediately
     setCart([]);
 
     let storedUser = JSON.parse(localStorage.getItem("user"));
 
-    // Check if the user has enough gold
     if (storedUser.gold < totalPrice) {
       alert("Not enough gold for this purchase!");
       return;
     }
 
-    // Deduct the total price from user's gold
     storedUser.gold -= totalPrice;
     localStorage.setItem("user", JSON.stringify(storedUser));
 
-    // Create the order using the copied cart items
     const order = {
       id: new Date().getTime(),
       items: cartItems.map((item) => ({
@@ -147,12 +145,10 @@ const Products = () => {
       date: new Date().toISOString(),
     };
 
-    // Retrieve existing orders and add the new order
     const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
     existingOrders.push(order);
     localStorage.setItem("orders", JSON.stringify(existingOrders));
 
-    // Show success message after clearing the cart
     alert("Thank you for your purchase!");
   };
 
@@ -181,6 +177,12 @@ const Products = () => {
                   <span className="cart-item-price">
                     {item.price.toFixed(0)} gp x {item.quantity}
                   </span>
+                  <button
+                    className="delete-button"
+                    onClick={() => removeFromCart(item.id)}
+                  >
+                    Delete
+                  </button>
                 </li>
               ))}
             </ul>

@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import "./App.css";
 import Riddles from "./games/Riddles.jsx";
+import Click from "./games/Click.jsx";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -47,6 +48,7 @@ function App() {
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/riddles" element={<Riddles />} />
+        <Route path="/click" element={<Click />} />
       </Routes>
     </div>
   );
