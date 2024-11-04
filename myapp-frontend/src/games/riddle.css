@@ -82,3 +82,121 @@ body {
     font-size: 0.9rem; /* Smaller button text on mobile */
   }
 }
+
+/* riddle.css */
+
+/* Default (Light Mode) */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5; /* Light background for contrast */
+  color: #333; /* Text color */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
+.riddle-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50; /* Darker color for title */
+}
+
+.riddle-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #16a085; /* Teal color for subtitle */
+}
+
+.riddle {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center; /* Center text */
+  max-width: 500px; /* Limit width for better readability */
+}
+
+.riddle-answers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between buttons */
+}
+
+.answer {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db; /* Blue color for buttons */
+  color: white; /* Text color for buttons */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.answer:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+.answer:focus {
+  outline: none; /* Remove default focus outline */
+}
+
+.feedback {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e74c3c; /* Red color for feedback message */
+  text-align: center; /* Center the feedback */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #181818; /* Dark background */
+  color: #e0e0e0; /* Light text color */
+}
+
+body.dark-mode .riddle-title {
+  color: #ecf0f1; /* Light color for title in dark mode */
+}
+
+body.dark-mode .riddle-subtitle {
+  color: #1abc9c; /* Lighter teal color for subtitle */
+}
+
+body.dark-mode .riddle {
+  font-size: 1.4rem;
+  color: #eeeeee; /* Optional border color */
+}
+
+body.dark-mode .answer {
+  background-color: #2980b9; /* Darker blue for buttons */
+  color: white; /* Keep text color white */
+}
+
+body.dark-mode .answer:hover {
+  background-color: #1f6394; /* Even darker blue on hover */
+}
+
+body.dark-mode .feedback {
+  color: #e74c3c; /* Keep feedback color consistent */
+}
+
+/* Optional: Additional styles for mobile responsiveness */
+@media (max-width: 600px) {
+  .riddle-title {
+    font-size: 2rem; /* Smaller title on mobile */
+  }
+
+  .riddle-subtitle {
+    font-size: 1.2rem; /* Smaller subtitle on mobile */
+  }
+
+  .riddle {
+    font-size: 1rem; /* Smaller riddle text on mobile */
+  }
+
+  .answer {
+    font-size: 0.9rem; /* Smaller button text on mobile */
+  }
+}

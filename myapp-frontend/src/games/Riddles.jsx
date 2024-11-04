@@ -64,6 +64,110 @@ const Riddles = () => {
       ],
       correct: "In a dictionary",
     },
+    {
+      question: "What has to be taken before you can have it?",
+      answers: ["A photograph", "A nap", "A step", "A ticket"],
+      correct: "A photo",
+    },
+    {
+      question:
+        "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?",
+      answers: ["An echo", "A cloud", "A shadow", "A dream"],
+      correct: "An echo",
+    },
+    {
+      question: "What can travel around the world while staying in a corner?",
+      answers: ["A stamp", "A cloud", "A letter", "A coin"],
+      correct: "A stamp",
+    },
+    {
+      question: "What begins with T, ends with T, and has T in it?",
+      answers: ["A teapot", "A tent", "A toaster", "A ticket"],
+      correct: "A teapot",
+    },
+    {
+      question: "I have branches, but no fruit, trunk, or leaves. What am I?",
+      answers: ["A bank", "A river", "A library", "A road"],
+      correct: "A bank",
+    },
+    {
+      question: "What is full of holes but still holds water?",
+      answers: ["A sponge", "A bucket", "A net", "A colander"],
+      correct: "A sponge",
+    },
+    {
+      question: "What has one eye but cannot see?",
+      answers: ["A needle", "A hurricane", "A storm", "A potato"],
+      correct: "A needle",
+    },
+    {
+      question: "What gets wetter as it dries?",
+      answers: ["A towel", "A sponge", "A river", "A raindrop"],
+      correct: "A towel",
+    },
+    {
+      question: "What has a thumb and four fingers but is not alive?",
+      answers: ["A glove", "A robot", "A hand", "A statue"],
+      correct: "A glove",
+    },
+    {
+      question: "What is always in front of you but can’t be seen?",
+      answers: ["The future", "Air", "Your shadow", "A dream"],
+      correct: "The future",
+    },
+    {
+      question: "What is so fragile that saying its name breaks it?",
+      answers: ["Silence", "A promise", "A secret", "Trust"],
+      correct: "Silence",
+    },
+    {
+      question:
+        "What begins with an E, ends with an E, but only contains one letter?",
+      answers: ["An envelope", "An eye", "An experience", "An engine"],
+      correct: "An envelope",
+    },
+    {
+      question: "What can you catch but not throw?",
+      answers: ["A cold", "A fish", "A ball", "A glimpse"],
+      correct: "A cold",
+    },
+    {
+      question: "What has teeth but cannot bite?",
+      answers: ["A comb", "A saw", "A zipper", "A lock"],
+      correct: "A comb",
+    },
+    {
+      question: "What is easy to get into, but hard to get out of?",
+      answers: ["Trouble", "A relationship", "Debt", "A car"],
+      correct: "Trouble",
+    },
+    {
+      question:
+        "What begins with P, ends with E, and has thousands of letters?",
+      answers: ["Post office", "Page", "Pineapple", "Parade"],
+      correct: "Post office",
+    },
+    {
+      question: "What can you hold in your left hand but not in your right?",
+      answers: ["Your right hand", "A pencil", "A book", "A coin"],
+      correct: "Your right hand",
+    },
+    {
+      question: "What has legs but doesn't walk?",
+      answers: ["A table", "A chair", "A spider", "A person"],
+      correct: "A table",
+    },
+    {
+      question:
+        "What is light as a feather, yet the strongest person can't hold it for long?",
+      answers: ["Breath", "A whisper", "A thought", "A shadow"],
+      correct: "Breath",
+    },
+    {
+      question: "What has an eye but cannot see?",
+      answers: ["A needle", "A storm", "A potato", "A camera"],
+      correct: "A needle",
+    },
   ];
 
   const [currentRiddleIndex, setCurrentRiddleIndex] = useState(0);
@@ -89,7 +193,7 @@ const Riddles = () => {
   const handleAnswerClick = (answer) => {
     const isCorrect = answer === riddles[currentRiddleIndex].correct;
 
-    setFeedback(isCorrect ? "Correct!" : "Try again!");
+    setFeedback(isCorrect ? "Correct!" : "Incorrect!");
 
     setTimeout(() => {
       if (isCorrect) {
@@ -108,7 +212,6 @@ const Riddles = () => {
   return (
     <div>
       <h1 className="riddle-title">Choose Correctly</h1>
-      <h2 className="riddle-subtitle">Earn Gold</h2>
       <p className="riddle">{question}</p>
       <div className="riddle-answers">
         {shuffledAnswers.map((answer, index) => (

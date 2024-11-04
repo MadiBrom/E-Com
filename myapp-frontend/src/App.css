@@ -20,8 +20,8 @@ body.dark-mode #root {
   position: fixed;
   top: 0;
   left: 0;
-  background: var(--navbar-background);
-  color: var(--text-color);
+  background: var(--navbar-background); /* Light mode background */
+  color: var(--text-color); /* Light mode text color */
   padding: 1rem 2rem;
   text-align: center;
   font-size: 1.2rem;
@@ -168,4 +168,34 @@ body {
 
 .home-cta-button:hover {
   background-color: var(--button-hover-background);
+}
+
+/* General Button Styles in Navbar */
+.navbar button {
+  background-color: var(--button-background); /* Light mode button background */
+  color: var(--text-color); /* Light mode button text color */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+  border-radius: 5px; /* Rounded corners */
+  background-color: rgb(209, 209, 209);
+  color: #1e1e1e;
+}
+
+/* Dark Mode Button Styles in Navbar */
+body.dark-mode .navbar button {
+  background-color: #444444; /* Dark background for buttons in dark mode */
+  color: #ffffff; /* Light text color for buttons in dark mode */
+}
+
+/* Button Hover Effects */
+.navbar button:hover {
+  background-color: #3498db; /* Blue background on hover in light mode */
+  color: white; /* Ensure text remains white on hover */
+}
+
+/* Dark Mode Button Hover Effects */
+body.dark-mode .navbar button:hover {
+  background-color: #2980b9; /* Darker blue on hover in dark mode */
 }
