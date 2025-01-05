@@ -109,7 +109,8 @@ const Profile = () => {
         <h2 className="profile-subheading">
           Email: {user ? user.email : "Loading..."}
         </h2>
-        <h3> {user ? user.gold.toFixed(0) : "0"} 🪙 </h3>
+        <h3>         {user?.gold != null ? user.gold.toFixed(0) : "0"} 🪙
+        </h3>
         <h3 className="orders-heading">Your Orders:</h3>
         {orders.length > 0 ? (
           <ul className="orders-list">

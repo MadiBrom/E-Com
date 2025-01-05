@@ -47,7 +47,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile user={user} />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register setUser={setUser} />} />        
         <Route path="/riddles" element={<Riddles />} />
         <Route path="/click" element={<Click />} />
         <Route path="/prize" element={<Prize />} />

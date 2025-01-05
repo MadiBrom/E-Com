@@ -80,7 +80,7 @@ const Click = () => {
         style={{ position: "relative", height: "100vh", overflow: "hidden" }}
       >
         {gameOver ? (
-          <h1>Game Over! You earned {clickCount} gold. Redirecting...</h1>
+          <h1>Game Over! You earned {clickCount} X 2 🪙. Redirecting...</h1>
         ) : (
           <>
             <div className="dots-container">

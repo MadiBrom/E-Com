@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken"); // Ensure jwt is required
 
 const app = express();
-const port = 5000;
+const port = 3000;
 
 // Middleware
 app.use(cors({ origin: "http://localhost:5173" }));
